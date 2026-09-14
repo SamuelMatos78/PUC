@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar conta | PUC Minas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <img class="background" th:src="@{/images/fundo.png}" alt="">
+
+    <main class="auth-layout">
+        <aside class="campus" aria-label="PUC Minas">
+            <img th:src="@{/images/puc.jpeg}" alt="Ilustração do campus da PUC Minas, com jardins e edifício histórico">
+            <div class="campus-caption"><span>PUC Minas</span><p>Conhecimento que transforma.</p></div>
+        </aside>
+        <section class="panel" aria-labelledby="page-title">
+            <header><p class="eyebrow">PUC Minas · Projeto acadêmico</p><h1 id="page-title">Criar conta</h1><p class="subtitle">Preencha seus dados para começar.</p></header>
+
+            <p class="message error" role="alert" th:if="${error}" th:text="${error}"></p>
+            <form th:action="@{/register}" method="post">
+                <label for="username">Usuário</label>
+                <input id="username" name="username" th:value="${username}" autocomplete="username" maxlength="255" required>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" th:value="${email}" autocomplete="email" maxlength="255" required>
+                <label for="password">Senha</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" aria-describedby="password-hint" required>
+                <small id="password-hint">Use ao menos 8 caracteres e até 72 bytes. Acentos podem ocupar mais de um byte.</small>
+                <label for="confirmPassword">Confirmar senha</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" maxlength="72" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <nav aria-label="Opções de acesso"><a th:href="@{/login}">Já tenho conta. Entrar</a></nav>
+            <footer>Aplicação acadêmica de autenticação</footer>
+        </section>
+    </main>
+</body>
+</html>

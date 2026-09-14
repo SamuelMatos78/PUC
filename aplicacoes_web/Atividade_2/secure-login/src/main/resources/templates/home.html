@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Área autenticada | PUC Minas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <img class="background" th:src="@{/images/fundo.png}" alt="">
+
+    <main class="auth-layout">
+        <aside class="campus" aria-label="PUC Minas">
+            <img th:src="@{/images/puc.jpeg}" alt="Ilustração do campus da PUC Minas, com jardins e edifício histórico">
+            <div class="campus-caption"><span>PUC Minas</span><p>Conhecimento que transforma.</p></div>
+        </aside>
+        <section class="panel" aria-labelledby="page-title">
+            <header><p class="eyebrow">PUC Minas · Projeto acadêmico</p><h1 id="page-title">Área autenticada</h1><p class="subtitle">Seu acesso foi realizado com sucesso.</p></header>
+
+            <p class="welcome">Olá, <strong th:text="${nome}">usuário</strong>!</p>
+            <p>Esta página está disponível apenas enquanto você estiver autenticado.</p>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">Sair da conta</button>
+            </form>
+            <footer>Aplicação acadêmica de autenticação</footer>
+        </section>
+    </main>
+</body>
+</html>

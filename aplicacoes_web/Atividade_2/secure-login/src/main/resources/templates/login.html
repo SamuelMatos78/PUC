@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entrar | PUC Minas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <img class="background" th:src="@{/images/fundo.png}" alt="">
+    <main class="auth-layout">
+        <aside class="campus" aria-label="PUC Minas">
+            <img th:src="@{/images/puc.jpeg}" alt="Ilustração do campus da PUC Minas, com jardins e edifício histórico">
+            <div class="campus-caption"><span>PUC Minas</span><p>Conhecimento que transforma.</p></div>
+        </aside>
+        <section class="panel" aria-labelledby="page-title">
+            <header><p class="eyebrow">PUC Minas · Projeto acadêmico</p><h1 id="page-title">Entrar</h1><p class="subtitle">Acesse sua área acadêmica.</p></header>
+
+            <p class="message error" role="alert" th:if="${param.error}">Usuário ou senha inválidos.</p>
+            <p class="message success" role="status" th:if="${param.registered}">Cadastro concluído. Entre com seu usuário e senha.</p>
+            <p class="message success" role="status" th:if="${param.logout}">Você saiu da sua conta.</p>
+            <form th:action="@{/login}" method="post">
+                <label for="username">Usuário</label>
+                <input id="username" name="username" autocomplete="username" maxlength="255" required>
+                <label for="password">Senha</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <nav aria-label="Opções de acesso"><a th:href="@{/register}">Criar conta</a><a th:href="@{/recoverpassword}">Esqueci minha senha</a></nav>
+            <footer>Aplicação acadêmica de autenticação</footer>
+        </section>
+    </main>
+</body>
+</html>
